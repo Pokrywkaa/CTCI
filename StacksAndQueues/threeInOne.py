@@ -11,11 +11,11 @@ class threeStack:
             self.t1+=1
             self.t2+=1
             self.t3+=1
-        if numberOfStack==2:
+        elif numberOfStack==2:
             self.array.insert(self.t2, value)
             self.t2+=1
             self.t3+=1
-        if numberOfStack==3:
+        elif numberOfStack==3:
             self.array.insert(self.t3, value)
             self.t3+=1
 
