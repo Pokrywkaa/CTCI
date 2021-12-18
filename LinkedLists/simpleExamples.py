@@ -50,6 +50,19 @@ class Linked_list:
         prev.next=HeadVal.next
         HeadVal=None
 
+    def reverseList(self):
+        prev=None
+        current=self.headval
+        following=current.next
+
+        while current:
+            current.next=prev
+            prev=current
+            current=following
+            if following:
+                following=following.next
+        self.headval=prev 
+
 list1=Linked_list()
 list1.headval=Node('a')
 e2=Node('b')
@@ -65,5 +78,7 @@ list1.atEnd('end')
 list1.inBetween(e3, 'between')
 
 list1.removeNode('d')
+
+# list1.reverseList()
 
 list1.printList()
