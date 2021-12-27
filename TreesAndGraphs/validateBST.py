@@ -36,6 +36,17 @@ def checkBST(root):
         return False
     return True
 
+#the best solution
+def checkBST2(root, min=None, max=None):
+    if not root:
+        return True
+    if min is not None and root.val<=min or max is not None and root.val>max:
+        return False
+    if not checkBST2(root.left, min, root.val) or not checkBST2(root.right, root.val, max):
+        return False
+    return True
+
+
 
 if __name__=='__main__':
     A = Node(8)
@@ -48,6 +59,7 @@ if __name__=='__main__':
     root1 = Node(3, left=D, right=G)
     print(validateBST(root1))
     print(checkBST(root1))
+    print(checkBST2(root1))
 
 
     O = Node(7)
@@ -60,3 +72,5 @@ if __name__=='__main__':
     G = Node(10, right=E)
     root2 = Node(8, left=D, right=G)
     print(validateBST(root2))
+    print(validateBST(root2))
+    print(checkBST2(root2))
