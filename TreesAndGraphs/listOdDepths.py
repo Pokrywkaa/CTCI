@@ -43,12 +43,11 @@ def listOfDepths(tree):
         linkedLists.append(D)
         nextD=LinkedList()
         for i in D:
-            nextD.addAtBeginning(i.left)
             nextD.addAtBeginning(i.right)
+            nextD.addAtBeginning(i.left)
         for i in D:
             print(i.value)
         D=nextD
-        print('\n')
     return linkedLists
 
 A = TreeNode(8)
