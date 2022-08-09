@@ -19,4 +19,4 @@ def is_path(maze, row, col, path):
         return True
     return False
 
-print(path([[1,1,1], [0,1,0], [0,1,1]]))
+print(path([[1,1,1], [0,1,0], [0,1,0], [0,1,1]]))
