@@ -42,5 +42,23 @@ def fibo2_helper(n, memo):
         memo[n] = fibo2_helper(n-2, memo)+fibo2_helper(n-1, memo)
     return memo[n]
 
-print(fibo(35))
-print(fibo2(35))
+def valid_parens(s):
+    valid = {'{': '}', '(': ')', '[': ']'}
+    stack = []
+    for i in s:
+        if i in valid.keys():
+            stack.append(valid[i])
+        elif len(stack) != 0 and i == stack[-1]:
+            stack.pop()
+        elif i not in valid.keys() and i not in valid.values():
+            continue
+        else:
+            return False
+    if len(stack)==0:
+        return True
+    return False
+
+print(valid_parens('{()}'))
+            
+
+
