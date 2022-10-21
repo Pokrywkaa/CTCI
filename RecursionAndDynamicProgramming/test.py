@@ -19,13 +19,14 @@
 # start_time = time.time()
 # print(fibo_memo(30))
 # print("---%s seconds ---" % (time.time()-start_time))
+
+
 def tripleStep(n):
     if n<0:
         return 0
     if n == 0:
         return 1
     return(tripleStep(n-1)+tripleStep(n-2)+tripleStep(n-3))
-print(tripleStep(3))
 
 def fibo(n):
     if n==0:
@@ -42,23 +43,20 @@ def fibo2_helper(n, memo):
         memo[n] = fibo2_helper(n-2, memo)+fibo2_helper(n-1, memo)
     return memo[n]
 
-def valid_parens(s):
-    valid = {'{': '}', '(': ')', '[': ']'}
-    stack = []
-    for i in s:
-        if i in valid.keys():
-            stack.append(valid[i])
-        elif len(stack) != 0 and i == stack[-1]:
-            stack.pop()
-        elif i not in valid.keys() and i not in valid.values():
-            continue
-        else:
-            return False
-    if len(stack)==0:
+
+def grid(row, col):
+    path = []
+    grid_path(row-1, col-1, path)
+    return path
+
+def grid_path(n,m,path):
+    if n < 0 or m < 0:
+        return False
+    
+    isAtOrigin = n == 0 and m == 0
+    
+    if isAtOrigin or grid_path(n, m-1, path) or grid_path(n-1, m, path):
+        path.append((n,m))
         return True
-    return False
 
-print(valid_parens('{()}'))
-            
-
-
+print(grid(3,3))

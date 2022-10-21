@@ -17,5 +17,25 @@ def insert_inside(str, left_index):
     right = str[(left_index+1):len(str)]
     return left + '()' + right
 
+
+def add_paren(l, left_rem, right_rem, s, index):
+    if left_rem < 0 or right_rem < left_rem:
+        return
+    if left_rem == 0 and right_rem == 0:
+        elem = ''.join(s)
+        l.append(elem)
+    else:
+        s[index] = '('
+        add_paren(l, left_rem-1, right_rem, s, index+1)
+        s[index] = ')'
+        add_paren(l, left_rem, right_rem-1, s, index+1)
+
+def generate_parens2(n):
+    res = []
+    s = ['*'] * n * 2
+    add_paren(res, n, n, s, 0)
+    return res    
+
 print(generate_parens(3))
+print(generate_parens2(3))
 
